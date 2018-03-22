@@ -1,0 +1,104 @@
+h1,h2,h3,h4,h5{
+    font-family: 'Trebuchet MS';
+}
+img {
+    padding-top: 10px
+    
+}
+
+.content {
+    padding-top: 50px
+}
+
+.content span {
+    text-shadow: 1px 1px #000000;
+}
+
+.content p {
+    text-shadow: 1px 1px #000000;
+}
+.wrapper{
+	/*background-image:url('../img/bg.png');*/
+	background-position:50% 50%;
+	background-size:cover;
+	width:auto;
+	height:auto;
+   
+}
+
+
+.logo{
+	padding-top:20px;
+}
+.logo img{
+	
+	width:25%;
+}
+.lead{
+	color:#fff;
+	margin-top:-4px;
+	font-size:3.5rem;
+}
+
+.content-wrapper{
+	padding:0  0;
+}
+
+
+.form-container {
+    background-repeat: repeat;
+    background-image: url('../img/dpr_bg.jpg');
+    /*padding: 150px 15px;*/
+    /*opacity: 0.9;*/
+    color: white;
+    margin-bottom: 0;
+    margin-right: 0;
+    padding-bottom: -60px;
+    height: 100vh;
+}
+
+.form-content img {
+    position: absolute;
+    top: -3px;
+   right: 20px;
+   left:5px;
+}
+.form-content {
+    padding-top: 220px;
+}
+.form-content p {
+    padding-top: 100px
+}
+.footer {
+    color: #ffffff;
+    padding-top: 100px
+}
+
+.btn-primary {
+    background-color: #56C21F !important;
+}
+
+a, a:visited{
+    color:#FFFFFF;
+}
+ .input-lg{
+     height:85px;
+     font-size:25px;
+     border-radius:10px;
+     text-align:center;
+ }
+.navbar-fixed-bottom{
+    background-color:#0B3568;
+}
+#why:hover {
+    background-color: #56C21F !important;
+    color:#FFF;
+}
+.finer{
+    background-color: #808080;
+}
+
+.finer .form-horizontal{
+    margin-top: 20px !important;
+}
+

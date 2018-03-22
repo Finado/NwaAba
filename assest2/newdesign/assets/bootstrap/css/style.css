@@ -1,0 +1,174 @@
+@import url(../../../https://fonts.googleapis.com/css?family=Rubik:300,300i,400,400i,500,500i,700,700i,900,900i);
+
+
+
+
+
+body {
+  font-family: 'Rubik', sans-serif;
+  font-style: normal;
+  line-height: 1;
+}
+.navbar-top {
+    background: #00b300;
+    border-bottom: 4px solid #60B078;
+    color: #FFF;
+    border-radius: 0px;
+}
+
+/*.text-white{
+    color:#fff;
+}*/
+
+.navbar-doublerow > .navbar{
+	display: block;
+	padding: 0px auto;
+	margin: 0px auto;
+	min-height: 25px;
+}
+
+/*Down nav*/
+.navbar-doublerow .navbar-down .navbar-brand {
+    /*navbar brand*/
+	padding: 0px auto;
+	float: left;
+	color: #60B078;
+	font-size: 30px;
+}
+.navbar-doublerow .navbar-down ul>li>a{
+    /*Menu items*/
+	font-size: 15px;
+	color: #000;
+}
+.navbar-doublerow .navbar-down ul>li>a:hover{
+    /*menu hover*/
+	border-bottom: 1px solid #60B078;
+	color: #60B078;
+}
+.navbar-default .navbar-nav>li>a {
+  color: #fff;
+}
+.navbar-default .navbar-nav>li>a:hover, .navbar-default .navbar-nav>li>a:focus {
+  color: #fff;
+  background-color: #00b33c;
+}
+.navbar-top ul li span {
+  margin-right: 10px;
+}
+.navbar-top img {
+  transition: padding .2s;
+  border-bottom: 0px;
+	color: none;
+}
+
+.navbar-brand {
+  width: 100%;
+}
+.navbar-down {
+  background: #000;
+  color: #fff;
+  border-radius: 0px;
+}
+.navbar-down h1{
+  text-align: center;
+  margin-top: 2px;
+  margin-bottom: 2px
+}
+.jumbotron {
+    margin-top: 110px;
+    background-image: url("Content/newdesign/assets/images/mfbg.jpg");
+    min-height: 400px;
+}
+.mbr-white {
+  color: #fff;
+}
+.mbr-white h3 {
+  color: #ff0000;
+}
+.mbr-white ul{
+  list-style: none;
+  padding-left: 0px;
+}
+.mbr-white ul li {
+  padding-bottom: 40px;
+  font-size: 1.2em;
+  text-shadow: 1px 1px #1a1a1a;
+}
+.mbr-form {
+  border: 1px solid #FFF;
+  border-radius: 5px;
+  color: #fff;
+  font-size: 1.5em;
+  padding: 10px;
+  line-height: 2em;
+}
+.mbr-form .align-center {
+  font-size: 1.3em;
+}
+.mbr-form a {
+  color: #fff;
+}
+.panel-collapse p {
+  padding: 10px 20px;
+}
+.title h2 {
+  color: #00b300;
+}
+.title h3 {
+  font-size: 1.5em;
+}
+#accordion2-6 {
+  padding-top: 40px;
+  -webkit-column-count: 2; /* Chrome, Safari, Opera */
+    -moz-column-count: 2; /* Firefox */
+    column-count: 2;
+    -webkit-column-gap: 40px; /* Chrome, Safari, Opera */
+    -moz-column-gap: 40px; /* Firefox */
+    column-gap: 40px;
+    -webkit-column-rule: 1px solid lightblue; /* Chrome, Safari, Opera */
+}
+
+
+#accordion .glyphicon { margin-right:10px; }
+      .panel-collapse>.list-group .list-group-item:first-child {border-top-right-radius: 0;border-top-left-radius: 0;}
+      .panel-collapse>.list-group .list-group-item {border-width: 1px 0;}
+      .panel-collapse>.list-group {margin-bottom: 0;}
+      .panel-collapse .list-group-item {border-radius:0;}
+
+      .panel-collapse .list-group .list-group {margin: 0;margin-top: 10px;}
+      .panel-collapse .list-group-item li.list-group-item {margin: 0 -15px;border-top: 1px solid #ddd !important;border-bottom: 0;padding-left: 30px;}
+      .panel-collapse .list-group-item li.list-group-item:last-child {padding-bottom: 0;}
+
+      .panel-collapse div.list-group div.list-group{margin: 0;}
+      .panel-collapse div.list-group .list-group a.list-group-item {border-top: 1px solid #ddd !important;border-bottom: 0;padding-left: 30px;}
+      .panel-collapse .list-group-item li.list-group-item {border-top: 1px solid #DDD !important;}
+
+.carousel-indicators .active{ background: #31708f; }
+.content{ margin-top:20px; }
+.adjust1{ float:left; width:100%; margin-bottom:0; }
+.adjust2{ margin:0; }
+.carousel-indicators li{ border :1px solid #ccc; }
+.carousel-control{ color:#31708f; width:5%; }
+.carousel-control:hover, .carousel-control:focus{ color:#31708f; }
+.carousel-control.left, .carousel-control.right { background-image: none; }
+.media-object{ margin:auto; margin-top:15%; }
+@media screen and (max-width: 768px) { .media-object{ margin-top:0; } }
+
+.content4 {
+  text-align: center;
+  padding-bottom: 30px;
+}
+#accordion2 {
+  margin: 60px 0px;
+}
+
+#media {
+  margin-top: 60px;
+}
+
+#footer {
+  background-color: #1a1a1a;
+  color: #fff;
+  padding-top: 20px;
+  margin-top: 30px;
+}
