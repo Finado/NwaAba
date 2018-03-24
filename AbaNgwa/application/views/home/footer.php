@@ -16,19 +16,19 @@
         </div>
 
         <div class="three columns wow fadeInDown">
-            <h4>Company</h4>
+            <h4>Terms and Conditions</h4>
             <ul class="footer-links">
-                <li><a href="#">About Us</a></li>
-                <li><a href="#">Our Blog</a></li>
                 <li><a href="#">Terms of Service</a></li>
                 <li><a href="#">Privacy Policy</a></li>
             </ul>
         </div>
 
         <div class="three columns wow fadeInDown">
-            <h4>Press</h4>
+            <h4>Download </h4>
             <ul class="footer-links">
-                <li><a href="#">In the News</a></li>
+                <li>
+                    <a href="#"><img src="<?=base_url()?>assets/images/abamade/playstore.png" /> </a>
+                </li>
 
 
 

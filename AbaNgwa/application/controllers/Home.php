@@ -202,6 +202,437 @@ class Home extends CI_Controller{
     }
 
 
+    ///--------------------------------->Acccount redefined ------------------------------------------->
+    public function Account()
+    {
+        $data = array();
+        $this->Header2();
+        $data["title"] = "NwaAba | Find everything in Aba";
+
+        if(isset($_POST['register']))
+        {
+
+            $validate_data = array(
+                array(
+                    'field' => 'name',
+                    'label' => 'Name',
+                    'rules' => 'required'
+                ),
+
+                array(
+                    'field' => 'email',
+                    'label' => 'Email',
+                    'rules' => 'required|is_unique[jk_users.Email]'
+                ),
+
+                array(
+                    'field' => 'phone',
+                    'label' => 'Phone',
+                    'rules' => 'required|integer|is_unique[jk_users.Phone]'
+                ),
+                array(
+                    'field' => 'password',
+                    'label' => 'Password',
+                    'rules' => 'required'
+                )
+
+            );
+
+            $this->form_validation->set_rules($validate_data);
+            $this->form_validation->set_message('is_unique', 'The {field} already exists');
+            $this->form_validation->set_message('integer', 'The {field} must be number');
+            $this->form_validation->set_error_delimiters('<p class="text-danger">', '</p>');
+           if($this->form_validation->run() === true) {
+
+                $this->model_users->register();
+
+                $name = $this->input->post('name');
+                $email =  $this->input->post('email');
+                $phone =  $this->input->post('phone');
+                $pin = $this->input->post('password');
+
+                $this->session->set_flashdata('msg','<div class="alert alert-success text-center text-success">Registration was successful. Check your email to for
+details</div>');
+
+            }
+            else {
+                $this->session->set_flashdata('msg','<div class="alert alert-success text-center
+                text-success">Oops! Something went wrong!</div>');
+
+            }
+
+
+
+        }
+
+
+        if(isset($_POST['login'])) {
+            $this->load->helper(array('form', 'url'));
+            $this->load->library('form_validation');
+            $this->form_validation->set_rules('emails', 'Email', 'required');
+            $this->form_validation->set_rules('passwords', 'Password', 'required');
+
+
+            $dateTime = new DateTime();
+            $time = $dateTime->format("Y-m-d H:i:s");
+
+            $login = $this->model_users->login($time);
+
+            if ($login) {
+
+                $this->load->library('session');
+
+                $newdata = array(
+                    'user_id' => $login,
+                    'logged_in' => TRUE
+                );
+
+                $this->session->set_userdata($newdata);
+
+                redirect('http://localhost/NwaAba/AbaNgwa/index.php/User', 'refresh');
+                //$validator['messages'] = 'Loading..............';
+                //$validator['messages'] = 'http://localhost/NwaAba/AbaNgwa/index.php/User';
+            } else {
+                //$validator['success'] = false;
+                $this->session->set_flashdata('msg_login', '<div class="alert alert-danger text-center">Invalid User</div>');
+
+            } // /else
+        }
+
+
+
+       //$data['products'] = $this->model_users->Show_ProductById($id);
+        $this->load->view('home/account', $data);
+        $this->Footer();
+    }
+
+
+
+
+    /*####################################### User Management by Mr.Francis################## */
+    public function Logins(){
+        if(isset($_GET['user'])){
+
+            $this->session->set_flashdata('msg','<div class="alert alert-success text-center text-success">Your account has been activated, you may now login</div>');
+
+        }
+
+        $data['title'] = "Login | We Nothing but, Software";
+        if(isset($_POST['login'])){
+            $this->load->helper(array('form','url'));
+            $this->load->library('form_validation');
+            $this->form_validation->set_rules('email','Email','required');
+            $this->form_validation->set_rules('password','Password','required');
+
+            if($this->form_validation->run() == FALSE)
+            {
+                //load login form
+
+                //$this->load->view('pages/login', $data);
+
+            }
+
+            else if($this->form_validation->run() == TRUE)
+            {
+                //proccess form
+                $value=array('email' => $this->input->post('email'),
+                    'password'=> $this->input->post('password'),
+                );
+                if ($this->adminModel->check_user($value)==FALSE) {
+                    # code...
+                    //flash data
+                    $this->session->set_flashdata('msg_login','<div class="alert alert-danger text-center">Invalid username and password</div>');
+                    //redirect('http://localhost/codinglabplatform/');
+                    //$this->load->view('pages/login', $data);
+
+                }
+                elseif($this->adminModel->check_users($value)==TRUE){
+                    # code...
+                    $result=$this->adminModel->check_users($value);
+                    if($result['activation']==true){
+
+                        $active = $result['activation'];
+                        $sess_array	 = array(
+                            'email'  => $result['email'],
+                            //'name' => $result['name'],
+                            'id' => $result['id'],
+                            'loginuser'     => TRUE
+                        );
+                        $this->session->set_userdata($sess_array);
+
+                        redirect('http://codinglab.ng/Home/home','refresh');
+
+
+                    }  //End inner if statement
+                    else{
+                        $this->session->set_flashdata('msg_login','<div class="alert alert-danger text-center">Your account has not been activated</div>');
+                    }
+
+
+                }else{
+
+                    $this->session->set_flashdata('msg_login','<div class="alert alert-danger text-center">Your account has not been activated</div>');
+
+                }
+
+
+            }
+        }
+        $this->load->view('pages/login', $data);
+    }
+
+    public function LogOuts()
+    {
+        $array_items = array('email','name','loginuser');
+        $this->session->unset_userdata($array_items);
+        $this->session->sess_destroy();
+
+        redirect('http://codinglab.ng/','refresh');
+    }
+
+    function Registers()
+    {
+        $data['title'] ="Register | We Write the Code, you take the Glory!";
+        if(isset($_POST['register']))
+        {
+
+
+            $this->load->library('form_validation');
+            $this->form_validation->set_rules('fullname', 'Name', 'trim|required|min_length[4]');
+            $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email|is_unique[user.email]');
+            $this->form_validation->set_rules('phone', 'Phone', 'trim|required');
+            $this->form_validation->set_rules('password', 'Password', 'trim|required|min_length[4]|max_length[32]');
+            $table="user";
+            //$data['uname']=$this->session->username;
+            if ($this->form_validation->run()==FALSE) {
+                # code...
+                //$this->load->view('pages/register', $data);
+
+            }
+            else if($this->form_validation->run() == TRUE)
+            {
+                //$password = $this->input->post('password');
+                //$salt = uniqid($password);
+                //$hashed = hash('sha256', $password.$salt);
+
+                $hash=md5(rand(0,1000));
+
+
+                $values = array(
+                    'name' => $this->input->post('fullname'),
+                    'email' => $this->input->post('email'),
+                    'password' => $this->input->post('password'),
+                    'phone' => $this->input->post('phone'),
+                    'activation_key' => $hash
+
+                );
+                $name = $this->input->post('fullname');
+                $this->session->set_flashdata('msg','<div class="alert alert-success text-center text-success">Registration was successful. Check your email to activate your account</div>');
+
+                $insert = $this->adminModel->insertUsersDetail($table,$values);
+
+                $this->send_confirmation($name,$hash);
+
+
+            }
+
+
+        }
+
+
+        $this->load->view('pages/register', $data);
+    }
+
+    function send_confirmations($name,$hash){
+        $this->load->library('email',  array('mailtype' => 'html'));  	//load email library
+        $this->email->from('info@codinglab.ng', 'Coding Lab'); //sender's email
+        $address = $this->input->post(html_escape('email'));	//receiver's email
+        $subject="Coding Lab Email Verification";	//subject
+        $data = $this->adminModel->get_hash_value($address);
+        //$hash = $data['hash'];
+        //$new_hash = $this->input->get($hash);
+        $message= "<p>Thanks for signing up, $name! </p>
+
+        Your account has been created. <br/>
+        Here are your login details. <br/>
+        ------------------------------------------------- <br/>
+        Email   : . $address .
+        -------------------------------------------------<br/>
+
+       <p> Please click on the link below to activate your account:</p>
+       <a href='http://www.codinglab.ng/Home/verify?email=$address&hash=$hash'>http://www.codinglab.ng/Home/verify?email=$address &hash=$hash </a>";
+        /*-----------email body ends-----------*/
+        $this->email->to($address);
+        $this->email->subject($subject);
+        $this->email->message($message);
+        $this->email->send();
+
+
+    }
+
+
+    function  verify(){
+
+
+        $email = $_GET['email'];
+        $hash = $_GET['hash'];
+
+
+
+
+        $result = $this->adminModel->get_hash_value($email); //get the hash value which belongs to given email from database
+        // $verified = $result['activation'];
+        if($result['activation'] ==NULL)
+        {
+            if($result['activation_key']== $hash)
+            {
+                //check whether the input hash value matches the hash value retrieved from the database
+                $update = $this->adminModel->verify_user($email); //update the status of the user as verified
+                /*---Now you can redirect the user to whatever page you want---*/
+
+                if($update==TRUE)
+                {
+                    redirect("Home/Login?user=$email");
+                    //$this->Login();
+                }
+                redirect($this->Register());
+
+            }
+
+        }
+        else
+        {
+            $this->Register();
+        }
+    }
+
+
+
+
+    public function email_existss($email)
+    {
+        $data = array(
+            'email' => $email
+        );
+        $this->db->where('email', $email);
+        $query = $this->db->get('user',$data);
+        return $query->row_array();
+    }
+    public function reset_password($email,$password){
+        $data =array(
+            'email' => $email,
+            'password'=>$password);
+        $email = $data['email'];
+
+        if($data){
+            $this->db->where('email', $email);
+            $this->db->update('user', $data);
+            return TRUE;
+        }else{
+            return FALSE;
+        }
+
+    }
+
+
+    public function forgots(){
+
+        //Loads the view for the recover password process.
+
+
+        //$this->smartyci->display(APPPATH.'views/templates/forgot.tpl');
+        if(isset($_POST['send']))
+        {
+            $this->recover_password();
+            redirect('student/recover_password');
+        }
+
+    }
+    public function reset_pass(){
+        $this->load->library('smartyci');
+        //Loads the view for the recover password process.
+
+        redirect('student/login');
+
+
+        //$this->smartyci->display(APPPATH.'views/templates/login.tpl');
+
+    }
+    public function recover_password(){
+        $this->load->library('form_validation');
+        $this->load->library('email', array('mailtype' => 'html'));
+        $this->form_validation->set_rules('email', 'Email', 'required|trim|xss_clean|callback_validate_credentials');
+        $email = $this->input->post(html_escape('email'));
+        $result = $this->student_model->email_exists($email);
+        //check if email is in the database
+        if ($email === $result['email'])
+        {
+            //$them_pass is the varible to be sent to the user's email
+            $temp_pass = md5(uniqid());
+            //send email with #temp_pass as a link
+
+            $this->email->from('info@codinglab.ng', "Coding Lab");
+            $this->email->to($email);
+            $this->email->subject("Reset your Password");
+            $message = "<p>This email has been sent as a request to reset your password</p>";
+            $message .= "<p><a href='" . base_url() . "student/enter_pass/'>Click here </a>if you want to reset your password,
+                        if not, then ignore</p>";
+            $this->email->message($message);
+            $send = $this->email->send();
+            if ($send === TRUE)
+            {
+                echo "check your email for instructions, thank you";
+            }
+
+            else
+            {
+                echo "email was not sent, please contact your Network administrator";
+            }
+
+        }
+        else
+        {
+            echo "your email is not in our database";
+        }
+    }
+
+
+    public function enter_pass()
+    {
+        $this->load->library('form_validation');
+        if(isset($_POST['reset']))
+        {
+            $email = $this->input->post(html_escape('email'));
+            $new_pass = $this->input->post(html_escape('new_pass'));
+            $this->input->post(html_escape('c_new_pass'));
+            $salt = uniqid($new_pass);
+            $hashed = hash('sha256', $new_pass.$salt);
+            $this->form_validation->set_rules('email', 'Enail', 'trim|required|valid_email|is_unique[user.email]');
+            $this->form_validation->set_rules('new_pass', 'Password', 'required|trim');
+            $this->form_validation->set_rules('c_new_pass', 'Confirm Password', 'required|trim|matches[password]');
+            if ($this->form_validation->run()) {
+                echo "passwords match";
+            } else {
+                echo "passwords do not match";
+            }
+            $query = $this->adminModel->reset_password($email, $hashed);
+            if ($query === TRUE) {
+                $this->reset_pass();
+            }
+        }
+
+    }
+
+
+
+
+
+
+
+
+
+
+
 
     /* For Register and Login */
 
@@ -860,6 +1291,7 @@ class Home extends CI_Controller{
         $this->Footer();
 
     }
+
 
 
 }

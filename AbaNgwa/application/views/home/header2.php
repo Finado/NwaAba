@@ -93,8 +93,17 @@
 
 
                     <ul class="float-right">
-                        <li><a href="#"  class="active" data-toggle="modal" data-target="#reg"><i class="fa fa-user"></i> Sign Up</a></li>
-                        <li><a href="#" data-toggle="modal" data-target="#login" id="current"><i class="fa fa-lock"></i> Log In</a></li>
+                        <li><a href="<?=base_url()?>index.php/Account/Register" class="active" ><i
+                                    # class="fa
+                            fa-user"></i> Register</a></li>
+
+                        <li><a href="<?=base_url()?>index.php/Account/Login" class="active" id="current"><i
+                                    # class="fa
+                            fa-lock"></i> Login</a></li>
+                        <!-- <li><a href="#"  class="active" data-toggle="modal" data-target="#reg"><i class="fa
+                        fa-user"></i> Sign Up</a></li>
+                         <li><a href="#" data-toggle="modal" data-target="#login" id="current"><i class="fa
+                         fa-lock"></i> Log In</a></li>-->
                     </ul>
 
                 </nav>
