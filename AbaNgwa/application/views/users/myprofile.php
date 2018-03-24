@@ -4,12 +4,12 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            <i class="fa fa-plus-circle"></i> My Company
-            <small>Manage Company </small>
+            <i class="fa fa-plus-circle"></i> Profile
+            <small>My Profile </small>
         </h1>
         <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li class="active">Company</li>
+            <li class="active">My Profile</li>
         </ol>
     </section>
     <!-- Main content -->
@@ -33,7 +33,7 @@
                     <div class="box-body">
 
                         <?php
-                        foreach($pros as $pro):
+                        foreach($profile as $pro):
                             ?>
 
                             <div class="row wow fadeInDown" data-wow-offset="300">
@@ -43,7 +43,7 @@
                                 <div class="col-md-6 wow fadeInDown">
 
                                     <?php
-                                    if($pro['Logo'] == 0){
+                                    if(empty($pro['Logo'])){
                                         echo '<div class="text-center">
                         <i class="fa fa-5x fa-university"></i>
                     </div>';
@@ -51,8 +51,9 @@
                                         ?>
 
 
-                                    <a href="#"><img src="<?=base_url()?>assets/uploads/logo/<?=$pro['Logo'];?>"
-                                                     class="img-thumbnail" alt="" style="height: 200px !important; width: 400px
+                                    <a href="#"><img src="<?=base_url()?>assets/uploads/profile/<?=$pro['Logo'];?>"
+                                                     class="img-circle" alt="" style="height: 200px !important; width:
+                                                     200px
                 !important;"></a>
 
                                     <?php
@@ -65,25 +66,35 @@
 
                                 <div class="col-md-6 wow fadeInDown">
 
-                                    <p><b>Company Name:</b> <?=$pro['Name'];?></p>
+                                    <p><b>Name:</b> <?=$pro['CompanyName'];?></p>
                                     <p><b>Email:</b> <?=$pro['Email'];?></p>
                                     <p><b>Phone:</b>  <?=$pro['Phone'];?></p>
-                                    <p><b>Address:</b>  <?=$pro['Address'];?></p>
-                                    <p><b>Website:</b>  <?=$pro['Website'];?></p>
+                                    <p><b>SignUp Date:</b>  <?=$pro['SignUpDate'];?></p>
+
+
+                                    <hr/>
+                                    <h4>Change your Password</h4>
+
+                                    <form action="" method="post">
+                                        <div class="form-group">
+                                            <input type="text" class="search-field"  name="emails"
+                                                   placeholder="Password" />
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="password" class="search-field"   name="cpasswords"
+                                                   placeholder="Confirm Password">
+                                        </div>
+
+                                        <div class="text-center">
+                                            <button type="submit" name="changepass" class="button big margin-top-5"
+                                                    style="background-color:
+                            green !important; color: #ffffff !important;">Save</button>
+                                        </div>
+                                    </form>
 
 
 
-                                    <p> <b>Status:</b> <?php
-                                        $status = $pro['Approved'];
-                                        ?>
 
-                                        <?php
-                                        if( $status ==1){
-                                            echo "<span class='btn btn-success'>" ."Approved" ."</span>";
-                                        } else{
-                                            echo  "<span class='btn btn-danger'>" ."Pending" ."</span>";
-                                        }
-                                        ?>  | <a href="" class="btn btn-danger"><i class="fa fa-trash"></i></a></p>
 
 
                                 </div>

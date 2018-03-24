@@ -38,10 +38,10 @@
         <div class="three columns wow fadeInDown">
             <h4>Browse</h4>
             <ul class="footer-links">
-                <li><a href="#">Find Properties</a></li>
-                <li><a href="#">Find Products</a></li>
-                <li><a href="#">Find Companies</a></li>
-                <li><a href="#">Find Jobs</a></li>
+                <li><a href="<?=base_url()?>index.php/Home/Properties">Find Properties</a></li>
+                <li><a href="<?=base_url()?>index.php/Home/Products">Find Products</a></li>
+                <li><a href="<?=base_url()?>index.php/Home/Companies">Find Companies</a></li>
+                <li><a href="<?=base_url()?>index.php/Home/Jobs">Find Jobs</a></li>
 
             </ul>
         </div>

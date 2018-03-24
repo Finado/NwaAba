@@ -6,7 +6,7 @@
             <div class="resume-titlebar">
                 <img src="<?=base_url()?>assets/images/resumes-list-avatar-01.png" alt="">
                 <div class="resumes-list-content">
-                    <h4 style="color: #ffffff">John Doe <span style="color: #ffffff"><?=$user?></span></h4>
+                    <h4 style="color: #ffffff"> <span style="color: #ffffff"><?=$user?></span></h4>
                     <span class="icons" style="color: #ffffff"><i class="fa fa-map-marker"></i> <?=$loco?></span>
                     <span class="icons" style="color: #ffffff"><a href="#" style="color: #ffffff"><i class="fa fa-phone"></i> <?=$phone?></a></span>
                     <span class="icons" style="color: #ffffff"><a href="#" style="color: #ffffff"><i class="fa fa-link"></i> <?=$website?></a></span>
@@ -102,6 +102,8 @@
             <script async defer
                     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDmkelo6XV53M-o-fuGYurO0WT_RVcnZe0&callback=initMap">
             </script>
+
+
 
 
         </div>

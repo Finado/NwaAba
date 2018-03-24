@@ -109,7 +109,7 @@ class Account extends CI_Controller{
 
                     $this->session->set_userdata($newdata);
 
-                    redirect('http://localhost/NwaAba/AbaNgwa/index.php/User', 'refresh');
+                    redirect('http://localhost/NwaAba/AbaNgwa/index.php/User');
                     //$validator['messages'] = 'Loading..............';
                     //$validator['messages'] = 'http://localhost/NwaAba/AbaNgwa/index.php/User';
                 } else {
@@ -179,6 +179,10 @@ class Account extends CI_Controller{
                 $email =  $this->input->post('email');
                 $phone =  $this->input->post('phone');
                 $pin = $this->input->post('password');
+
+                $this->SmsAlert($phone, $pin, $name);
+                //$this->send_confirmation($name, $pin, $email);
+
 
                 $this->session->set_flashdata('msg','<div class="alert alert-success text-center text-success">Registration was successful. Check your email to for
 details</div>');
@@ -531,11 +535,11 @@ details</div>');
             $answer = fgets($f, 255);
             if (substr($answer, 0, 1) == "+")
             {
-                die("SMS to $sendto was successful: [$answer]");
+                //die("SMS to $sendto was successful: [$answer]");
             }
             else
             {
-                die("an error has occurred: [$answer].");
+                //die("an error has occurred: [$answer].");
             }
         }
         else
@@ -622,16 +626,6 @@ details</div>');
             return false;
         }
     }
-
-    //forgot companydetails ends here
-
-
-
-
-    //for search pages
-
-
-
 
 
 

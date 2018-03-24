@@ -90,15 +90,15 @@
                     <li>
                         <i class="fa fa-clock-o"></i>
                         <div>
-                            <strong>Hours:</strong>
-                            <span>40h / week</span>
+                            <strong>Job Type:</strong>
+                            <span><?=$type?></span>
                         </div>
                     </li>
                     <li>
                         <i class="fa fa-money"></i>
                         <div>
                             <strong>Rate:</strong>
-                            <span>N20,000 - N35,000 / monthly</span>
+                            <span>N<?=$salary?> / monthly</span>
                         </div>
                     </li>
                 </ul>

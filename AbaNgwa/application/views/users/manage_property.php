@@ -4,7 +4,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            <i class="fa fa-plus-circle"></i> News
+            <i class="fa fa-plus-circle"></i> My Property
             <small>Manage Property </small>
         </h1>
         <ol class="breadcrumb">
@@ -36,7 +36,7 @@
                         foreach($properties as $property):
                         ?>
 
-                        <div class="row wow bounceInLeft" data-wow-offset="300">
+                        <div class="row wow fadeInUp" data-wow-offset="200">
 
                             <div class="col-md-6">
                                 <a href="#"><img src="<?=base_url()?>assets/uploads/property/<?=$property['Image'];?>" class="img-thumbnail" alt="" style="height: 200px !important; width: 400px

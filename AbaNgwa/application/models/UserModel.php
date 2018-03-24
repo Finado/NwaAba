@@ -676,6 +676,18 @@ class UserModel extends CI_Model{
         return $query;
     }
 
+    public function get_profile_by_userid($UserId){
+
+        $this->db->select('*');
+        $this->db->from('jk_users');
+        $this->db->where('Id', $UserId);
+        $query= $this->db->get();
+        return $query->result_array();
+    }
+
+
+
+
 
 
     /**==================================User Management by Mr. Francis =========================*/

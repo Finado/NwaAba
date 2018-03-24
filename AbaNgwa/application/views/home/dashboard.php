@@ -10,7 +10,7 @@
 
             <?php foreach($featuredCompany as $fcom) {?>
 
-            <li  class="wow bounceInLeft" data-wow-offset="300"><a href="<?=base_url()?>index.php/Home/companydetails/<?=$fcom['Id']?>"><i class="ln
+            <li  class="wow fadeInDown"><a href="<?=base_url()?>index.php/Home/companydetails/<?=$fcom['Id']?>"><i class="ln
             ln-icon-Bar-Chart"></i> <?=$fcom['Name'];?><?= ' --> ' . $fcom['Phone'];?></a>
                 <small href="#"> </small>
             </li>
@@ -45,7 +45,7 @@
                 <?php
                 foreach($jobs as $job):
                 ?>
-                <li class="wow bounceInLeft" data-wow-offset="300"><a href="<?=base_url()?>index.php/Home/Jobdetails/<?=$job['Id'];?>">
+                <li class="wow fadeInDown"><a href="<?=base_url()?>index.php/Home/Jobdetails/<?=$job['Id'];?>">
                         <img src="<?=base_url()?>assets/images/job-list-logo-03.png" alt="">
                         <div class="job-list-content">
                             <h4><?=$job['Title'];?> - franconet <span class="full-time">View Details</span></h4>
@@ -86,7 +86,7 @@
         <!-- Showbiz Container -->
         <div id="job-spotlight" class="showbiz-container">
             <div class="showbiz" data-left="#showbiz_left_1" data-right="#showbiz_right_1" data-play="#showbiz_play_1" >
-                <div class="overflowholder testimonials-slider">
+                <div class="overflowholder testimonials-slider wow fadeInDown">
 
                     <ul class="slides">
                         <li>
@@ -155,7 +155,7 @@
     <div class="container">
         <div class="sixteen columns">
             <div class="testimonials-slider">
-                <ul class="slides wow bounceInLeft" data-wow-delay="2s">
+                <ul class="slides wow fadeInDown" data-wow-delay="1s">
                     <li>
                         <p>I was able to find job within Aba, I thank those that built this amazing platform
                             <span>Uche Jay</span></p>
@@ -197,7 +197,7 @@
     foreach($properties as $property):
     ?>
 
-    <div class="one-third column wow fadeInDown" style="margin-left: -2px !important;"  >
+    <div class="one-third column wow fadeInDown" style="margin-left: -1px !important;"  >
 
         <!-- Post #1 -->
         <div class="recent-post">

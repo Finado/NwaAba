@@ -1025,6 +1025,8 @@ details</div>');
             }
 
 
+        }else{
+            redirect("http://localhost/NwaAba/AbaNgwa/index.php/Home");
         }
 
     }
@@ -1284,6 +1286,8 @@ details</div>');
             $data['twitter'] = $jobdetail['TwitterUsername'];
             $data['image'] = $jobdetail['Image'];
             $data['type'] = $jobdetail['JobType'];
+            $data['salary'] = $jobdetail['salary'];
+
         }
 
 

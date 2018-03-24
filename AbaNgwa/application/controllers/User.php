@@ -735,5 +735,16 @@ class User extends CI_Controller{
         }
     }
 
+    public  function myprofile()
+    {
+        $this->Header();
+        $data = array();
+
+        $data['profile'] = $this->model_users->get_profile_by_userid($this->session->userdata('user_id'));
+
+
+        $this->load->view('users/myprofile', $data);
+        $this->Footer();
+    }
 
 }

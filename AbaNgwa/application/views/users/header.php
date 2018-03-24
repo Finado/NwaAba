@@ -53,9 +53,9 @@
 <body class="hold-transition  sidebar-mini">
 <div class="wrapper">
 
-    <header class="main-header navbar-default navbar-fixed-top bg-green" >
+    <header class="main-header navbar-default navbar-fixed-top bg-green" style="height: 50px !important;" >
         <!-- Logo -->
-        <a href="~/Admin" class="logo">
+        <a href="<?=base_url()?>index.php/User" class="logo">
             <!-- mini logo for sidebar mini 50x50 pixels -->
             <span class="logo-mini" title="" style="color: #ffffff !important;"> Nwa<b>Aba</b> </span>
             <!-- logo for regular state and mobile devices -->
@@ -64,7 +64,9 @@
         <!-- Header Navbar: style can be found in header.less -->
         <nav class="navbar navbar-static-top" role="navigation">
             <!-- Sidebar toggle button-->
-            <a href="#" style="color: #ffffff !important;" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+            <a href="#" style="color: #ffffff !important; background-color: green !important;" class="sidebar-toggle"
+               data-toggle="offcanvas"
+               role="button">
                 <span class="sr-only">Toggle navigation</span>
             </a>
             <div class="navbar-custom-menu">
@@ -76,12 +78,13 @@
                             <?php
                             foreach($logo as $mylogo):
 
-                                if(!$mylogo==NULL){
+                                if(!empty($mylogo)){
                                     ?>
                                     <img src="<?=base_url()?>assets/uploads/profile/<?=$mylogo['Logo'];?>" class="user-image" />
                                     <?php
-                                }else { ?>
-                                    <img src="<?=base_url()?>assets/uploads/profile/defaultlogo.png" class="user-image" alt="User Image">
+                                }else{ ?>
+                                    <img src="<?=base_url()?>assets/uploads/profile/native.png" class="user-image"
+                                         alt="User Image">
 
 
                                     <?php
@@ -95,12 +98,13 @@
                                 <?php
                                 foreach($logo as $mylogo):
 
-                                    if(!$mylogo==NULL){
+                                    if(!$mylogo == ''){
                                         ?>
                                         <img src="<?=base_url()?>assets/uploads/profile/<?=$mylogo['Logo'];?>" class="user-image" />
                                         <?php
                                     }else { ?>
-                                        <img src="<?=base_url()?>assets/uploads/defaultlogo.png" class="user-image" alt="User Image">
+                                        <img src="<?=base_url()?>assets/uploads/native.png" class="user-image"
+                                             alt="User Image">
 
 
                                         <?php
@@ -109,21 +113,25 @@
                                 ?>                                      <p  style="color: #bd4147 !important;" >
                                     <?=$companyName?>
                                     <small style="color: #bd4147 !important;">Member since <?=$signUpDate?></small>
-                                    <a href="#" style="color: #bd4147 !important;"><small>Preview Your page</small></a>
+
                                 </p>
                             </li>
                             <!-- Menu Body -->
                             <!-- Menu Footer-->
                             <li class="user-footer">
                                 <div class="pull-left">
-                                    <a href="#" class="btn btn-default btn-flat">Profile</a>
+                                    <a href="<?=base_url()?>index.php/User/myprofile" class="btn btn-default
+                                    btn-flat">Profile</a>
                                 </div>
                                 <div class="pull-right">
                                     <a href="<?=base_url()?>/index.php/User/Logout" class="btn btn-default btn-flat">Sign out</a>
                                 </div>
                             </li>
                         </ul>
+                        <span class="caret"></span>
                     </li>
+
+
 
                 </ul>
             </div>
